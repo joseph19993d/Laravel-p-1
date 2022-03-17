@@ -3,6 +3,9 @@
 use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
 
+
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CursoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,14 +24,13 @@ Route::get('/', function () {
 */
 
 
-Route::get('/{pagina}',function($pagina){
-    return "Vista vacia: ".$pagina;
-});
-Route::get('/',function(){
-    return "Vista vacia";
-});
-Route::get('cursos/create',function(){ return "en esta pagina se podra crear un curso";});
-Route::get('cursos/{variable}',function($variable){ return "en esta pagina se podra crear un curso";});
-Route::get('cursos/{v1}/{v2}', function($v1,$v2){return "Las varible son[".$v1."]"."[".$v2."]";});
 
+
+Route::get('/cursos',[CursoController::class,'index']);
+Route::get('cursos/create',[CursoController::class,'create']);
+Route::get('cursos/{curso}',[CursoController::class, 'show']);
+
+
+Route::get('/',[HomeController::class, 'home']);
+Route::get('/{pagina}',function($pagina){return "Vista: ( ".$pagina." ) vacia";});
 
