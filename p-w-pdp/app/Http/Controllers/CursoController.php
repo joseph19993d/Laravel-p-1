@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class CursoController extends Controller
 {
-    public function index(){return "Bienvenido a cursos";}
-    public function create(){ return "pagin de crear";}
-    public function show($curso){  return "El curso a crar es: ".$curso;}
+    public function index(){ return view("curso.index");}
+    public function create(){ return view("curso.create");}
+    public function show($curso){  return view("curso.show",['c'=>$curso]);}
 }

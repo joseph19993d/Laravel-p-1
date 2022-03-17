@@ -22,15 +22,19 @@ Route::get('/', function () {
 
 });
 */
+Route::controller(CursoController::class)->group(function(){
+    Route::get('/cursos','index');
+    Route::get('cursos/create','create');
+    Route::get('cursos/{curso}', 'show');
+}
+    );
+
+Route::get('/',HomeController::class);
 
 
+Route::controller(HomeController::class)->group(function(){
+});
 
-
-Route::get('/cursos',[CursoController::class,'index']);
-Route::get('cursos/create',[CursoController::class,'create']);
-Route::get('cursos/{curso}',[CursoController::class, 'show']);
-
-
-Route::get('/',[HomeController::class, 'home']);
 Route::get('/{pagina}',function($pagina){return "Vista: ( ".$pagina." ) vacia";});
+
 
