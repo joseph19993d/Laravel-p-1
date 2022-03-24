@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Curso;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use phpDocumentor\Reflection\Location;
 
@@ -17,12 +18,22 @@ class CursoController extends Controller
         compact('cursos')
      );}
 
+
     public function create(){
         return view("curso.create");
     }
 
+
     public function store(Request $request){
        // return $request->all();
+       $request->validate([
+        'name'=>'required|max:55',
+        'descripcion'=>'required|min:5',
+        'categoria'=>'required'
+
+
+       ]);
+
        $curso= new Curso();
        $curso->name = $request->name;
        $curso->descripcion = $request->descripcion;
@@ -43,16 +54,39 @@ class CursoController extends Controller
 
         if(isset($curso)){
             if ($curso->name){
-                return view("curso.show",['curso'=>$curso]);
-                //return view("curso.show",compact('curso'));
+                //return view("curso.show",['curso'=>$curso]);
+                return view("curso.show",compact('curso'));
+                // return  redirect()->route('cursos.show',$curso);
+
             }
         }else{
             return view("curso.show",['curso'=>'Curso:'.$id.' aun no existe']);
         }
         }
 
+
     public function edit(Curso $curso){
         return view('curso.edit', compact('curso'));
+    }
+
+
+    public function update(Request $request, Curso $curso){
+        //$curso = new Curso();
+        $request-> validate([
+        'name'=>'required',
+        'descripcion'=>'required',
+        'categoria'=>'required'
+        ]);
+
+        $curso->name= $request->name;
+        $curso->descripcion= $request->descripcion;
+        $curso->categoria= $request->categoria;
+        $curso->save();
+        return  redirect()->route('cursos.show',$curso);
+       //return view("curso.show",['curso'=>$curso]);
+
+
+
     }
 
 }

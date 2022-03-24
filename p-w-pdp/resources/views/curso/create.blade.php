@@ -1,30 +1,47 @@
 @extends('layouts.plantilla')
-@section('title','show')
+@section('title','curso create')
 
 @section('content')
 <h1>En esta pagina podras crear cursos </h1>
+<a href="{{route('cursos.index')}}">Volver</a>
 
 <form action="{{route('cursos.store')}}" method="POST">
 @csrf
 <label for="">
     Nombre:
     <br>
-    <input type="text" name="name" />
+    <input type="text" name="name" value="{{old('name')}}" />
 </label>
+@error('name')
+<br>
+<small>*{{$message}}</small>
 <br>
 
-<label for="">
+@enderror
+<br>
+
+<label >
     Descripcion:
     <br>
-    <textarea name="descripcion" id="" cols="30" rows="5" ></textarea>
+    <textarea name="descripcion" rows="4"  value="{{old('descripcion')}}"></textarea>
 </label>
+@error('descripcion')
+<br>
+<small>*{{$message}}</small>
+<br>
+@enderror
 <br>
 
-<label for="">
+<label >
     Categoria:
     <br>
-    <input type="text" name="categoria" maxlength="20" />
+    <input type="text" name="categoria" maxlength="20" value="{{old('categoria')}}" />
 </label>
+@error('categoria')
+<br>
+<small>*{{$message}}<small>
+<br>
+@enderror
 <p>
 <button type="submit" value="">Enviar formulario </button>
 </form>

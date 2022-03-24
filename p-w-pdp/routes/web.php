@@ -17,11 +17,8 @@ use App\Models\Curso;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-
-
 Route::get('/', function () {
     return view('welcome');
-
 });
 */
 Route::controller(CursoController::class)->group(
@@ -32,16 +29,11 @@ Route::controller(CursoController::class)->group(
         Route::get('cursos/{curso}', 'show')->name('cursos.show');
         Route::post('cursos','store')->name('cursos.store');
         Route::get('cursos/{curso}/edit','edit')->name('cursos.edit');
-
+        Route::put('cursos/{curso}','update')->name('cursos.update');
 
     }
 );
-
-
-
-
 Route::get('/',HomeController::class); //laravel menor a 9
-
 
 Route::controller(HomeController::class)->group(function(){
 });
