@@ -6,6 +6,9 @@ use App\Models\Curso;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use phpDocumentor\Reflection\Location;
+use App\Http\Requests\StoreCurso;
+use Illuminate\Contracts\Cache\Store;
+use PhpParser\Node\Expr\FuncCall;
 
 class CursoController extends Controller
 
@@ -24,15 +27,9 @@ class CursoController extends Controller
     }
 
 
-    public function store(Request $request){
+  //  public function store(Request $request){
+    public function store(StoreCurso $request){
        // return $request->all();
-       $request->validate([
-        'name'=>'required|max:55',
-        'descripcion'=>'required|min:5',
-        'categoria'=>'required'
-
-
-       ]);
 
        $curso= new Curso();
        $curso->name = $request->name;
@@ -70,13 +67,16 @@ class CursoController extends Controller
     }
 
 
-    public function update(Request $request, Curso $curso){
+    //public function update(Request $request, Curso $curso){
+    public function update(StoreCurso $request, Curso $curso){
         //$curso = new Curso();
+        /*
         $request-> validate([
         'name'=>'required',
         'descripcion'=>'required',
         'categoria'=>'required'
         ]);
+        */
 
         $curso->name= $request->name;
         $curso->descripcion= $request->descripcion;
