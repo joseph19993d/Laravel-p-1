@@ -11,7 +11,7 @@ class StoreCurso extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize() //--------------------------------------------------------------------------------<-
     {
         return true;
     }
@@ -21,6 +21,8 @@ class StoreCurso extends FormRequest
      *
      * @return array
      */
+    //------------------------------------------------------------------------------------------------------------->
+
     public function rules()
     {
         return [
@@ -31,16 +33,18 @@ class StoreCurso extends FormRequest
                 'categoria'=>'required'
 
 
-
-
         ];
     }
+    //------------------------------------------------------------------------------------------------------------->
+
     public function attributes()
     {
         return[
             'name'=>'nombre de curso '
         ];
     }
+    //------------------------------------------------------------------------------------------------------------->
+
     public function messages()
     {
         return[

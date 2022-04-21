@@ -3,11 +3,10 @@
 namespace Database\Seeders;
 
 use App\Models\Curso;
-use Faker\Factory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class CursoSeeders extends Seeder
+class CursoSeeder extends Seeder
 {
     /**
      * Seed the application's database.
@@ -17,6 +16,7 @@ class CursoSeeders extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        Curso::factory(50)->create();
+        Curso::factory(30)->create();
+
     }
 }

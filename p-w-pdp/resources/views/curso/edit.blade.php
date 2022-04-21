@@ -5,10 +5,13 @@
 <h1> En esta pagina podras editar el curso:  {{$curso->name}}</h1>
 
 
-
 <form action="{{route('cursos.update', $curso)}}" method="POST">
+
 @csrf
-@method('put')
+@method('put') <!-- METODO INPORTANTE, ES LA FORMA COMO LO RECIVIRA WEB -->
+
+
+
 <label for="">
     Nombre:
     <br>
@@ -20,6 +23,8 @@
 <br>
 @enderror
 <br>
+
+
 
 <label for="">
     Descripcion:
@@ -33,6 +38,8 @@
 @enderror
 <br>
 
+
+
 <label for="">
     Categoria:
     <br>
@@ -44,6 +51,9 @@
 <br>
 @enderror
 <p>
+
+
+
 <button type="submit" value="">Enviar formulario </button>
 </form>
 

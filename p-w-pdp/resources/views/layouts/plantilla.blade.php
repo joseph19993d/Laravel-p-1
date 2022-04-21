@@ -9,17 +9,24 @@
     <!-- favicon -->
     <!-- estilos -->
    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+   <style>
+       .active{
+           color: red;
+       }
+   </style>
 
 
 </head>
 <body>
-    <header></header>
+    @include('layouts.partials.header')
     <!-- nav -->
+
     <div class=body>
         @yield('content')
-
     </div>
-    <footer></footer>
+
+    @include('layouts.partials.footer')
     <!-- script -->
+
 </body>
 </html>
